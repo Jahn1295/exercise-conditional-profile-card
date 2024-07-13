@@ -29,21 +29,75 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let roleDropDown = "";
+  if (variables.role === null) {
+    roleDropDown = "Select";
+  } else {
+    roleDropDown = variables.role;
+  }
+  let firstName = "";
+  if (variables.name === null) {
+    firstName = "Your Name";
+  } else {
+    firstName = variables.name;
+  }
+  let lastName = "";
+  if (variables.lastName === null) {
+    lastName = " goes here";
+  } else {
+    lastName = variables.lastName;
+  }
+  let myCountry = "";
+  if (variables.country === null) {
+    myCountry = "Country";
+  } else {
+    myCountry = variables.country;
+  }
+  let myCity = "";
+  if (variables.city === null) {
+    myCity = "City";
+  } else {
+    myCity = variables.city;
+  }
+  let myTwitter = "";
+  if (variables.twitter === null) {
+    myTwitter = "https://twitter.com/4geeksacademy";
+  } else {
+    myTwitter = "https://twitter.com/" + variables.twitter;
+  }
+  let myGithub = "";
+  if (variables.github === null) {
+    myGithub = "https://github.com/4geeksacademy";
+  } else {
+    myGithub = "https://github.com/" + variables.github;
+  }
+  let myLinkedIn = "";
+  if (variables.linkedin === null) {
+    myLinkedIn = "https://linkedin.com/school/4geeksacademy";
+  } else {
+    myLinkedIn = "https://linkedin.com/" + variables.linkedin;
+  }
+  let myInsta = "";
+  if (variables.instagram === null) {
+    myInsta = "https://instagram.com/4geeksacademy";
+  } else {
+    myInsta = "https://instagram.com/" + variables.instagram;
+  }
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${firstName} ${lastName}</h1>
+          <h2>${roleDropDown}</h2>
+          <h3>${myCity}, ${myCountry}</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href= "${myTwitter}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="${myGithub}"><i class="fab fa-github"></i></a></li>
+            <li><a href="${myLinkedIn}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a target="_blank" href="${myInsta}"><i class="fab fa-instagram"></i></a></li>
           </ul>
-        </div>
-    `;
+        </div>`;
 }
 
 /**
